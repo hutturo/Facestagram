@@ -8,5 +8,4 @@ object Repository {
     val post = PostRepository()
     val postUser = PostUserRepository()
     val user = UserRepository()
-
 }

@@ -7,7 +7,7 @@ abstract class DoubleKeyEntityRepository<T : DoubleKeyEntity<K1, K2>, K1, K2>
     override val getLastQuery: String
         get() = "select top 1 * from $entityName order by ${keyNames.split(",")[0]} desc"
 
-    fun getByPK(id1: K1, id2: K2): T? {
+    protected fun getByPK(id1: K1, id2: K2): T? {
         val keyNamesContainer = keyNames.split(",")
         val statement = createStatement(
                 "select * from $entityName where ${keyNamesContainer[0]} = ? and ${keyNamesContainer[1]} = ?")
@@ -27,7 +27,7 @@ abstract class DoubleKeyEntityRepository<T : DoubleKeyEntity<K1, K2>, K1, K2>
         return entity
     }
 
-    fun deleteByPK(id1: K1, id2: K2){
+    protected fun deleteByPK(id1: K1, id2: K2){
         val keyNamesContainer = keyNames.split(",")
         val statement = createStatement(
                 "delete $entityName where ${keyNamesContainer[0]} = ? and ${keyNamesContainer[1]} = ?")
@@ -39,7 +39,7 @@ abstract class DoubleKeyEntityRepository<T : DoubleKeyEntity<K1, K2>, K1, K2>
         close(statement)
     }
 
-    fun delete(entity: T){
+    protected fun delete(entity: T){
         deleteByPK(entity.keyValue1, entity.keyValue2)
     }
 }

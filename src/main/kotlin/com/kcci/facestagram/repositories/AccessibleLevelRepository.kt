@@ -1,4 +1,4 @@
 package com.kcci.facestagram.repositories
 
-class AccessibleLevel {
+class AccessibleLevelRepository {
 }

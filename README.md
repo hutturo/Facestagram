@@ -11,5 +11,6 @@
 * ## 기대효과
     배달의 민족, 요기요 등의 서비스는 최근 급부상하여 큰 이익을 창출하였으나 요식업이나 숙박 등 특정 분야에 치중 되어있어 한계가 있다고 생각됨. 하지만 Facestagram은 이러한 한계를 뛰어넘어 다양한 상업 분야로 진출해 소상공인들과 협력해 더 큰 경제효과를 창출할 것으로 기대한다.
 * ## 시스템 구상도
-    
+    ![alt text](https://github.com/hakumaku/Facestagram/blob/master/github/system.png)
 * ## 데이터 베이스
+    ![alt text](https://github.com/hakumaku/Facestagram/blob/master/github/diagram.png)

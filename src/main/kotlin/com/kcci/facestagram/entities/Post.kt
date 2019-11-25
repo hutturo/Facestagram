@@ -2,7 +2,10 @@ package com.kcci.facestagram.entities
 
 import java.time.LocalDateTime
 
-class Post {
+class Post : SingleKeyEntity<Int>() {
+    override val keyValue1: Int
+        get() = postId
+
     var postId: Int = 0
     var userId: Int = 0
     var content: String = ""

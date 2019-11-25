@@ -12,16 +12,16 @@ class PostRepository : SingleKeyEntityRepository<Post, Int>() {
 
 
     override fun readEntity(result: ResultSet): Post {
-        val post = Post()
-        post.postId = result.getInt(1)
-        post.userId = result.getInt(2)
-        post.content = result.getString(3)
-        post.planStartDate = LocalDateTime.parse(result.getString(4))
-        post.planEndDate = LocalDateTime.parse(result.getString(5))
-        post.placeId = result.getInt(6)
-        post.accessibleLevelId = result.getInt(7)
+        val entity = Post()
+        entity.postId = result.getInt(1)
+        entity.userId = result.getInt(2)
+        entity.content = result.getString(3)
+        entity.planStartDate = LocalDateTime.parse(result.getString(4))
+        entity.planEndDate = LocalDateTime.parse(result.getString(5))
+        entity.placeId = result.getInt(6)
+        entity.accessibleLevelId = result.getInt(7)
 
-        return post
+        return entity
     }
 
     fun find(PostId: Int): MutableList<Post> {

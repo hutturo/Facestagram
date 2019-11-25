@@ -11,12 +11,12 @@ class PlaceRepository : SingleKeyEntityRepository<Place, Int>() {
     override val keyNames get() = "PlaceId"
 
     override fun readEntity(result: ResultSet): Place {
-        val place = Place()
-        place.placeId = result.getInt(1)
-        place.category = result.getInt(2)
-        place.name = result.getString(3)
+        val entity = Place()
+        entity.placeId = result.getInt(1)
+        entity.category = result.getInt(2)
+        entity.name = result.getString(3)
 
-        return place
+        return entity
     }
 
     fun find(PlaceId: Int): MutableList<Place> {

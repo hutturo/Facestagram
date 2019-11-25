@@ -16,13 +16,13 @@ class BookingRepository: SingleKeyEntityRepository<Booking, Int>() {
 
 
     override fun readEntity(result: ResultSet): Booking {
-        val booking = Booking()
-        booking.bookingId = result.getInt(1)
-        booking.startDate = LocalDateTime.parse(result.getString(2))
-        booking.endDate = LocalDateTime.parse(result.getString(3))
-        booking.price = result.getInt(4)
+        val entity = Booking()
+        entity.bookingId = result.getInt(1)
+        entity.startDate = LocalDateTime.parse(result.getString(2))
+        entity.endDate = LocalDateTime.parse(result.getString(3))
+        entity.price = result.getInt(4)
 
-        return booking
+        return entity
 
     }
 

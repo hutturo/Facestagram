@@ -14,3 +14,13 @@
     ![alt text](github/system.png)
 * ## 데이터 베이스
     ![alt text](github/diagram.png)
+
+
+# TODO
+* 회원가입
+* 회원 정보 관리(마이페이지)
+* 친구 목록
+* 내 달력
+* 포스트 기능 (생성, 편집, 삭제)
+* 친구 포스트 보기
+* 오픈 포스트 보기

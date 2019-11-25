@@ -4,6 +4,7 @@ import java.time.LocalDateTime
 
 class Post {
     var postId: Int = 0
+    var userId: Int = 0
     var content: String = ""
     var planStartDate: LocalDateTime = LocalDateTime.now()
     var planEndDate: LocalDateTime? = null

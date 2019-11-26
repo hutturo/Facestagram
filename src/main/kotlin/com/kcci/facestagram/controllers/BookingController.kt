@@ -36,4 +36,5 @@ class BookingController {
 
     @RequestMapping(path = ["/{id}"], method = [RequestMethod.DELETE])
     fun deleteByPK(@PathVariable id: Int) = Repository.place.deleteByPK(id)
+
 }

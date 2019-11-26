@@ -8,4 +8,5 @@ object Repository {
     val post = PostRepository()
     val postUser = PostUsersRepository()
     val users = UsersRepository()
+    val friend = FriendRepository()
 }

@@ -3,7 +3,7 @@ package com.kcci.facestagram.repositories
 import com.kcci.facestagram.entities.SingleKeyEntity
 
 abstract class SingleKeyEntityRepository<T: SingleKeyEntity<K1>, K1> : EntityRepository<T>() {
-    protected fun getByPK(id: K1): T? {
+    fun getByPK(id: K1): T? {
         val statement = createStatement("select * from $entityName where $keyNames = ?")
         statement.setObject(1, id)
 
@@ -20,7 +20,7 @@ abstract class SingleKeyEntityRepository<T: SingleKeyEntity<K1>, K1> : EntityRep
         return entity
     }
 
-    protected fun deleteByPK(id: K1){
+    fun deleteByPK(id: K1){
         val statement = createStatement("delete $entityName where $keyNames = ?")
         statement.setObject(1, id)
 
@@ -29,7 +29,7 @@ abstract class SingleKeyEntityRepository<T: SingleKeyEntity<K1>, K1> : EntityRep
         close(statement)
     }
 
-    protected fun delete(entity: T){
+    fun delete(entity: T){
         deleteByPK(entity.keyValue1)
     }
 }

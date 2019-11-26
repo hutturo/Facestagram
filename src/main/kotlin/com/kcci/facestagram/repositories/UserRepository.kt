@@ -6,11 +6,8 @@ import java.sql.ResultSet
 import java.time.LocalDateTime
 
 class UserRepository : SingleKeyEntityRepository<User, Int>() {
-
     override val entityName get() = "User"
     override val keyNames get() = "UserId"
-
-
 
     override fun readEntity(result: ResultSet): User {
         val user = User()

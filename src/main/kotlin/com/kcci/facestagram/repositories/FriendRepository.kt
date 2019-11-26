@@ -1,7 +1,7 @@
 package com.kcci.facestagram.repositories
 
 import com.kcci.facestagram.entities.Friend
-import com.kcci.facestagram.entities.User
+import com.kcci.facestagram.entities.Users
 import com.kcci.facestagram.exceptions.UnupdatableException
 import java.sql.PreparedStatement
 import java.sql.ResultSet
@@ -10,11 +10,11 @@ class FriendRepository : DoubleKeyEntityRepository<Friend, Int, Int>() {
     override val entityName: String
         get() = "Friend"
     override val keyNames: String
-        get() = "UserId, FriendId"
+        get() = "UsersId, FriendId"
 
     override fun readEntity(result: ResultSet): Friend {
         val entity = Friend()
-        entity.userId = result.getInt(1)
+        entity.usersId = result.getInt(1)
         entity.friendId = result.getInt(2)
 
         return entity
@@ -40,7 +40,7 @@ class FriendRepository : DoubleKeyEntityRepository<Friend, Int, Int>() {
     override fun insertCore(entity: Friend): PreparedStatement {
         val statement = createStatement("insert into Friend values(?, ?)")
 
-        statement.setInt(1, entity.userId)
+        statement.setInt(1, entity.usersId)
         statement.setInt(2, entity.friendId)
 
         return statement

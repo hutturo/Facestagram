@@ -6,6 +6,6 @@ object Repository {
     val category = CategoryRepository()
     val place = PlaceRepository()
     val post = PostRepository()
-    val postUser = PostUserRepository()
-    val user = UserRepository()
+    val postUser = PostUsersRepository()
+    val users = UsersRepository()
 }

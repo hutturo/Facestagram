@@ -18,16 +18,17 @@ class BookingRepository: SingleKeyEntityRepository<Booking, Int>() {
     override fun readEntity(result: ResultSet): Booking {
         val entity = Booking()
         entity.bookingId = result.getInt(1)
-        entity.startDate = LocalDateTime.parse(result.getString(2))
-        entity.endDate = LocalDateTime.parse(result.getString(3))
-        entity.price = result.getInt(4)
+        entity.placeId = result.getInt(2)
+        entity.startDate = LocalDateTime.parse(result.getString(3))
+        entity.endDate = LocalDateTime.parse(result.getString(4))
+        entity.price = result.getInt(5)
 
         return entity
 
     }
 
     fun find(BookingId: Int): MutableList<Booking> {
-        val statement = createStatement("select BookingId, startDate, endDate, price from Booking where BookingId like ?")
+        val statement = createStatement("select BookingId, PlaceId ,startDate, endDate, price from Booking where BookingId like ?")
         statement.setInt(1, BookingId)
 
         val result = statement.executeQuery()
@@ -45,20 +46,22 @@ class BookingRepository: SingleKeyEntityRepository<Booking, Int>() {
     }
 
     override fun insertCore(entity: Booking): PreparedStatement {
-        val statement = createStatement("insert into Booking values(?, ?, ?)")
+        val statement = createStatement("insert into Booking values(?, ?, ?, ?)")
 
-        statement.setString(1, entity.startDate.toString().replace("T", " ").dropLast(6))
-        statement.setString(2, entity.endDate.toString().replace("T", " ").dropLast(6))
-        statement.setInt(3, entity.price)
+        statement.setInt(1, entity.placeId)
+        statement.setString(2, entity.startDate.toString().replace("T", " ").dropLast(6))
+        statement.setString(3, entity.endDate.toString().replace("T", " ").dropLast(6))
+        statement.setInt(4, entity.price)
 
         return statement
     }
 
     override fun updateCore(entity: Booking): PreparedStatement {
-        val statement = createStatement("update Booking set startDate = ?, endDate = ? where bookingId = ?")
-        statement.setString(1, entity.startDate.toString().replace("T", " ").dropLast(6))
-        statement.setString(2, entity.endDate.toString().replace("T", " ").dropLast(6))
-        statement.setInt(3, entity.bookingId)
+        val statement = createStatement("update Booking set PlaceId = ?, startDate = ?, endDate = ? where bookingId = ?")
+        statement.setInt(1, entity.placeId)
+        statement.setString(2, entity.startDate.toString().replace("T", " ").dropLast(6))
+        statement.setString(3, entity.endDate.toString().replace("T", " ").dropLast(6))
+        statement.setInt(4, entity.bookingId)
 
         return statement
     }

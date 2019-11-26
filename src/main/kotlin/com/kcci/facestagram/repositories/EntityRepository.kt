@@ -18,8 +18,8 @@ abstract class EntityRepository<T: Entity> {
         statement.connection?.close()
     }
 
-    protected fun convertDate(date: LocalDateTime): String {
-        return date.toString().replace("T", " ").dropLast(6)
+    protected fun convertDate(date: LocalDateTime?): String {
+        return date?.toString()!!.replace("T", " ").dropLast(6)
     }
 
     protected abstract val entityName: String

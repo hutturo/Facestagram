@@ -10,5 +10,4 @@ class Booking : SingleKeyEntity<Int>() {
     var placeId: Int = 0
     var startDatetime: LocalDateTime = LocalDateTime.now()
     var endDatetime: LocalDateTime = LocalDateTime.now()
-
 }

@@ -5,7 +5,8 @@ import com.kcci.facestagram.entities.DoubleKeyEntity
 abstract class DoubleKeyEntityRepository<T : DoubleKeyEntity<K1, K2>, K1, K2>
     : EntityRepository<T>() {
     override val getLastQuery: String
-        get() = "select top 1 * from $entityName order by ${keyNames.split(",")[0]} desc"
+        get() = "select top 1 * from $entityName" +
+                " order by ${keyNames.split(",")[0]} desc"
 
     fun getByPK(id1: K1, id2: K2): T? {
         val keyNamesContainer = keyNames.split(",")

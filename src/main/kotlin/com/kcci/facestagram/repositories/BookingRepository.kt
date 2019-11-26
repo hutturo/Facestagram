@@ -26,7 +26,6 @@ class BookingRepository: SingleKeyEntityRepository<Booking, Int>() {
         statement.setString(2, convertDate(entity.startDatetime))
         statement.setString(3, convertDate(entity.endDatetime))
 
-
         return statement
     }
 

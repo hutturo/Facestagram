@@ -9,7 +9,7 @@ class FriendRepository : DoubleKeyEntityRepository<Friend, Int, Int>() {
     override val entityName: String
         get() = "Friend"
     override val keyNames: String
-        get() = "UsersId, FriendId"
+        get() = "UserId, FriendId"
 
     override fun readEntity(result: ResultSet): Friend {
         val entity = Friend()
@@ -20,7 +20,7 @@ class FriendRepository : DoubleKeyEntityRepository<Friend, Int, Int>() {
     }
 
     override fun insertCore(entity: Friend): PreparedStatement {
-        val statement = createStatement("insert into $entityName values(?, ?)")
+        val statement = createStatement("insert into [$entityName] values(?, ?)")
 
         statement.setInt(1, entity.userId)
         statement.setInt(2, entity.friendId)

@@ -10,7 +10,7 @@ class Post : SingleKeyEntity<Int>() {
     var postId: Int = 0
     var userId: Int = 0
     var content: String = ""
-    var LastModified: LocalDateTime = LocalDateTime.now()
+    var lastModified: LocalDateTime = LocalDateTime.now()
     var planStartDatetime: LocalDateTime? = null
     var planEndDatetime: LocalDateTime? = null
     var placeId: Int = 0

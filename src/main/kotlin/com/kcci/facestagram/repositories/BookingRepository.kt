@@ -20,28 +20,6 @@ class BookingRepository: SingleKeyEntityRepository<Booking, Int>() {
         return entity
     }
 
-    fun find(BookingId: Int): MutableList<Booking> {
-        /**
-         * Inner join required.
-         */
-        val statement = createStatement(
-                "select * from $entityName where $keyNames like ?")
-        statement.setInt(1, BookingId)
-
-        val result = statement.executeQuery()
-
-        val bookings = mutableListOf<Booking>()
-        while (result.next()) {
-            val booking = readEntity(result)
-
-            bookings.add(booking)
-        }
-
-        close(statement)
-
-        return bookings
-    }
-
     override fun insertCore(entity: Booking): PreparedStatement {
         val statement = createStatement("insert into $entityName values(?, ?, ?, ?)")
 

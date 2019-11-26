@@ -19,9 +19,10 @@ class PlaceRepository : SingleKeyEntityRepository<Place, Int>() {
         return entity
     }
 
-    fun find(PlaceId: Int): MutableList<Place> {
-        val statement = createStatement("select PlaceId, Category, Name from Place where PlaceId like ?")
-        statement.setInt(1, PlaceId)
+    fun find(name: String): MutableList<Place> {
+        val statement = createStatement("select * from $entityName" +
+                " where name like ?")
+        statement.setString(1, "%$name%")
 
         val result = statement.executeQuery()
 
@@ -38,7 +39,7 @@ class PlaceRepository : SingleKeyEntityRepository<Place, Int>() {
     }
 
     override fun insertCore(entity: Place): PreparedStatement {
-        val statement = createStatement("insert into Place values(?, ?)")
+        val statement = createStatement("insert into $entityName values(?, ?)")
 
         statement.setInt(1, entity.category)
         statement.setString(2, entity.name)
@@ -47,7 +48,9 @@ class PlaceRepository : SingleKeyEntityRepository<Place, Int>() {
     }
 
     override fun updateCore(entity: Place): PreparedStatement {
-        val statement = createStatement("update Place set Category = ?, Name = ? where PlaceId = ?")
+        val statement = createStatement(
+                "update $entityName set Category = ?, Name = ?" +
+                        " where $keyNames = ?")
         statement.setInt(1, entity.category)
         statement.setString(2, entity.name)
         statement.setInt(3, entity.placeId)

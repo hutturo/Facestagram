@@ -19,9 +19,9 @@ class PostUserRepository : DoubleKeyEntityRepository<PostUser, Int, Int>() {
         return entity
     }
 
-    fun find(PostUserId: Int): MutableList<PostUser> {
+    fun find(PostId: Int): MutableList<PostUser> {
         val statement = createStatement("select  PostId, UserId from PostUser where PostId like ?")
-        statement.setInt(1, PostUserId)
+        statement.setInt(1, PostId)
         val result = statement.executeQuery()
 
         val postUsers = mutableListOf<PostUser>()

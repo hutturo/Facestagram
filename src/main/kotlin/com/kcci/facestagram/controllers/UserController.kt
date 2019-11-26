@@ -1,26 +1,26 @@
 package com.kcci.facestagram.controllers
 
-import com.kcci.facestagram.entities.Users
+import com.kcci.facestagram.entities.User
 import com.kcci.facestagram.repositories.Repository
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 class UserController {
     @GetMapping
-    fun getAll() = Repository.users.getAll()
+    fun getAll() = Repository.user.getAll()
 
     @RequestMapping(path = ["/{id}"], method = [RequestMethod.GET])
-    fun getById(@PathVariable id: Int) = Repository.users.getByPK(id)
+    fun getById(@PathVariable id: Int) = Repository.user.getByPK(id)
 
     @PostMapping
-    fun insert(@RequestBody user: Users){
-        Repository.users.insert(user)
+    fun insert(@RequestBody user: User){
+        Repository.user.insert(user)
     }
 
     @RequestMapping(path = ["/{id}"], method = [RequestMethod.PUT])
-    fun update(@RequestBody user: Users, @PathVariable id: Int){
-        val entity = Repository.users.getByPK(id)
+    fun update(@RequestBody user: User, @PathVariable id: Int){
+        val entity = Repository.user.getByPK(id)
         if (entity == null)
             return
 
@@ -28,9 +28,9 @@ class UserController {
         entity.password = user.password
         entity.name = user.name
         entity.profileImage = user.profileImage
-        Repository.users.update(entity)
+        Repository.user.update(entity)
     }
 
     @RequestMapping(path = ["/{id}"], method = [RequestMethod.DELETE])
-    fun deleteByPK(@PathVariable id: Int) = Repository.users.deleteByPK(id)
+    fun deleteByPK(@PathVariable id: Int) = Repository.user.deleteByPK(id)
 }

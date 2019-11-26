@@ -20,7 +20,7 @@ abstract class EntityRepository<T: Entity> {
     protected abstract val entityName: String
     protected abstract val keyNames: String
 
-    protected fun count(): Int {
+    fun count(): Int {
         val statement = createStatement("select count(*) from $entityName")
         val result = statement.executeQuery()
         result.next()
@@ -34,7 +34,7 @@ abstract class EntityRepository<T: Entity> {
 
     protected abstract fun readEntity(result: ResultSet): T
 
-    protected fun getAll(): MutableList<T> {
+    fun getAll(): MutableList<T> {
         val statement = createStatement("select * from $entityName")
         val result = statement.executeQuery()
 
@@ -51,7 +51,7 @@ abstract class EntityRepository<T: Entity> {
 
     protected abstract fun insertCore(entity: T): PreparedStatement
 
-    protected fun insert(entity: T) {
+    fun insert(entity: T) {
         val statement = insertCore(entity)
         statement.executeUpdate()
         close(statement)
@@ -59,7 +59,7 @@ abstract class EntityRepository<T: Entity> {
 
     protected abstract fun updateCore(entity: T): PreparedStatement
 
-    protected fun update(entity: T){
+    fun update(entity: T){
         val statement = updateCore(entity)
 
         statement.executeUpdate()
@@ -69,7 +69,7 @@ abstract class EntityRepository<T: Entity> {
 
     protected open val getLastQuery = "select top 1 * from $entityName order by $keyNames desc"
 
-    protected fun getLast(): T?{
+    fun getLast(): T?{
         val statement = createStatement(getLastQuery)
 
         val result = statement.executeQuery()

@@ -12,15 +12,23 @@ class FriendController {
     @GetMapping
     fun getAll() = Repository.friend.getAll()
 
-   // @RequestMapping(path = ["/{id}"], method = [RequestMethod.GET])
-    //fun getById(@PathVariable id: Int) = Repository.friend.getByPK(id)
 
-    @RequestMapping(path = ["/{id}"], method = [RequestMethod.GET])
-    fun getById(@PathVariable doubleKeyId: String) {
-        var numbersContainer: List<String> = doubleKeyId.split(",")
-        Repository.friend.getByPK( Integer.parseInt(numbersContainer[0]),
-                Integer.parseInt(numbersContainer[1]))
-    }
+
+    /*
+    /@RequestMapping(path = ["/{id}","/{id2}"], method = [RequestMethod.GET])
+    @RequestMapping(path = ["/friend/{id}/{id2}"], method = [RequestMethod.GET])
+    fun getById(@PathVariable id: Int, @PathVariable id2: Int) = Repository.friend.getByPK(id, id2)
+//    {
+//        var numbersContainer: List<String> = id.split(",")
+//        Repository.postUser.getByPK( Integer.parseInt(numbersContainer[0]),
+//                Integer.parseInt(numbersContainer[1]))
+//    }
+     */
+    // @RequestMapping(path = ["/{id}"], method = [RequestMethod.GET])
+    //fun getById(@PathVariable id: Int) = Repository.friend.getByPK(id)
+//
+//    @RequestMapping(path = ["/friend/{id}/{id2}"], method = [RequestMethod.GET])
+//    fun getById(@PathVariable id: Int, @PathVariable id2: Int) = Repository.friend.getByPK(id, id2)
 
     @PostMapping
     fun insert(@RequestBody friend: Friend){

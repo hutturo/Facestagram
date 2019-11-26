@@ -1,7 +1,6 @@
 package com.kcci.facestagram.controllers
 
 import com.kcci.facestagram.entities.Place
-import com.kcci.facestagram.entities.Users
 import com.kcci.facestagram.repositories.Repository
 import org.springframework.web.bind.annotation.*
 

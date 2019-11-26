@@ -1,10 +1,10 @@
 package com.kcci.facestagram.entities
 
-class Users : SingleKeyEntity<Int>() {
+class User : SingleKeyEntity<Int>() {
     override val keyValue1: Int
-        get() = usersId
+        get() = userId
 
-    var usersId: Int = 0
+    var userId: Int = 0
     var email: String = ""
     var password: String = ""
     var name: String = ""

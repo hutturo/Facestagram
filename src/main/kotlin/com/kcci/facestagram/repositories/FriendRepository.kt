@@ -20,9 +20,9 @@ class FriendRepository : DoubleKeyEntityRepository<Friend, Int, Int>() {
         return entity
     }
 
-    fun find(FriendId: Int): MutableList<Friend> {
+    fun find(UserId: Int): MutableList<Friend> {
         val statement = createStatement("select  UserId, FriendId from Friend where UserId like ?")
-        statement.setInt(1, FriendId)
+        statement.setInt(1, UserId)
         val result = statement.executeQuery()
 
         val friends = mutableListOf<Friend>()

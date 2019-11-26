@@ -6,10 +6,8 @@ import java.sql.ResultSet
 import java.time.LocalDateTime
 
 class PostRepository : SingleKeyEntityRepository<Post, Int>() {
-
     override val entityName get() = "Post"
     override val keyNames get() = "PostId"
-
 
     override fun readEntity(result: ResultSet): Post {
         val entity = Post()
@@ -24,26 +22,8 @@ class PostRepository : SingleKeyEntityRepository<Post, Int>() {
         return entity
     }
 
-    fun find(PostId: Int): MutableList<Post> {
-        val statement = createStatement("select PostId, UsersId, Content, PlanStartDate, PlanEndDate, PlaceId, AccessibleLevelId from Post where PostId like ?")
-        statement.setInt(1, PostId)
-
-        val result = statement.executeQuery()
-
-        val posts = mutableListOf<Post>()
-        while (result.next()) {
-            val post = readEntity(result)
-
-            posts.add(post)
-        }
-
-        close(statement)
-
-        return posts
-    }
-
     override fun insertCore(entity: Post): PreparedStatement {
-        val statement = createStatement("insert into Post values(?, ?, ?, ?, ?, ?)")
+        val statement = createStatement("insert into $entityName values(?, ?, ?, ?, ?, ?)")
 
         statement.setInt(1, entity.usersId)
         statement.setString(2, entity.content)

@@ -3,7 +3,6 @@ package com.kcci.facestagram.repositories
 import com.kcci.facestagram.entities.Users
 import java.sql.PreparedStatement
 import java.sql.ResultSet
-import java.time.LocalDateTime
 
 class UsersRepository : SingleKeyEntityRepository<Users, Int>() {
     override val entityName get() = "Users"

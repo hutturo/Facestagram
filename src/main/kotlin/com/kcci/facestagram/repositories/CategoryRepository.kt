@@ -5,10 +5,8 @@ import java.sql.PreparedStatement
 import java.sql.ResultSet
 
 class CategoryRepository : SingleKeyEntityRepository<Category, Int>() {
-
     override val entityName get() = "Category"
     override val keyNames get() = "CategoryId"
-
 
     override fun readEntity(result: ResultSet): Category {
         val entity = Category()
@@ -19,9 +17,8 @@ class CategoryRepository : SingleKeyEntityRepository<Category, Int>() {
 
     }
 
-
     override fun insertCore(entity: Category): PreparedStatement {
-        val statement = createStatement("insert into Category values(?)")
+        val statement = createStatement("insert into $entityName values(?)")
 
         statement.setString(1, entity.name)
 
@@ -29,11 +26,11 @@ class CategoryRepository : SingleKeyEntityRepository<Category, Int>() {
     }
 
     override fun updateCore(entity: Category): PreparedStatement {
-        val statement = createStatement("update Category set CategoryName = ? where CategoryId = ?")
+        val statement = createStatement(
+                "update $entityName set CategoryName = ? where $keyNames = ?")
         statement.setString(1, entity.name)
         statement.setInt(2, entity.categoryId)
 
         return statement
     }
-
 }

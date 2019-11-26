@@ -1,17 +1,13 @@
 package com.kcci.facestagram.repositories
 
+
 import com.kcci.facestagram.entities.AccessibleLevel
-
-
 import java.sql.PreparedStatement
 import java.sql.ResultSet
-import java.time.LocalDateTime
 
 class AccessibleLevelRepository : SingleKeyEntityRepository<AccessibleLevel, Int>() {
-
     override val entityName get() = "AccessibleLevel"
     override val keyNames get() = "accessibleLevelId"
-
 
     override fun readEntity(result: ResultSet): AccessibleLevel {
         val entity = AccessibleLevel()
@@ -22,17 +18,15 @@ class AccessibleLevelRepository : SingleKeyEntityRepository<AccessibleLevel, Int
 
     }
 
-
     override fun insertCore(entity: AccessibleLevel): PreparedStatement {
-        val statement = createStatement("insert into AccessibleLevel values(?)")
-
+        val statement = createStatement("insert into $entityName values(?)")
         statement.setString(1, entity.name)
-
         return statement
     }
 
     override fun updateCore(entity: AccessibleLevel): PreparedStatement {
-        val statement = createStatement("update AccessibleLevel set Name = ? where AccessibleLevelId = ?")
+        val statement = createStatement(
+                "update $entityName set Name = ? where $keyNames = ?")
         statement.setString(1, entity.name)
         statement.setInt(2, entity.accessibleLevelId)
 

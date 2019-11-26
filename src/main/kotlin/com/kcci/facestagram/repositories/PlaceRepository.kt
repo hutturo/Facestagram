@@ -3,10 +3,8 @@ package com.kcci.facestagram.repositories
 import com.kcci.facestagram.entities.Place
 import java.sql.PreparedStatement
 import java.sql.ResultSet
-import java.time.LocalDateTime
 
 class PlaceRepository : SingleKeyEntityRepository<Place, Int>() {
-
     override val entityName get() = "Place"
     override val keyNames get() = "PlaceId"
 

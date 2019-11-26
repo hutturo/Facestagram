@@ -4,6 +4,7 @@ import com.kcci.facestagram.entities.Entity
 import java.sql.DriverManager
 import java.sql.PreparedStatement
 import java.sql.ResultSet
+import java.time.LocalDateTime
 
 abstract class EntityRepository<T: Entity> {
     private val url = "jdbc:sqlserver://10.10.16.70;database=facestagram;user=sa;password=1234"
@@ -15,6 +16,10 @@ abstract class EntityRepository<T: Entity> {
     protected fun close(statement: PreparedStatement) {
         statement.resultSet?.close()
         statement.connection?.close()
+    }
+
+    protected fun convertDate(date: LocalDateTime): String {
+        return date.toString().replace("T", " ").dropLast(6)
     }
 
     protected abstract val entityName: String

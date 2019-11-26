@@ -19,25 +19,8 @@ class FriendRepository : DoubleKeyEntityRepository<Friend, Int, Int>() {
         return entity
     }
 
-    fun find(UsersId: Int): MutableList<Friend> {
-        val statement = createStatement("select  UsersId, FriendId from Friend where UsersId like ?")
-        statement.setInt(1, UsersId)
-        val result = statement.executeQuery()
-
-        val friends = mutableListOf<Friend>()
-        while (result.next()) {
-            val friend = readEntity(result)
-
-            friends.add(friend)
-        }
-
-        close(statement)
-
-        return friends
-    }
-
     override fun insertCore(entity: Friend): PreparedStatement {
-        val statement = createStatement("insert into Friend values(?, ?)")
+        val statement = createStatement("insert into $entityName values(?, ?)")
 
         statement.setInt(1, entity.usersId)
         statement.setInt(2, entity.friendId)

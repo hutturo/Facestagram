@@ -4,10 +4,8 @@ import com.kcci.facestagram.entities.PostUsers
 import com.kcci.facestagram.exceptions.UnupdatableException
 import java.sql.PreparedStatement
 import java.sql.ResultSet
-import java.time.LocalDateTime
 
 class PostUsersRepository : DoubleKeyEntityRepository<PostUsers, Int, Int>() {
-
     override val entityName get() = "PostUser"
     override val keyNames get() = "postId,userid"
 
@@ -17,23 +15,6 @@ class PostUsersRepository : DoubleKeyEntityRepository<PostUsers, Int, Int>() {
         entity.usersId = result.getInt(2)
 
         return entity
-    }
-
-    fun find(PostId: Int): MutableList<PostUsers> {
-        val statement = createStatement("select  PostId, UserId from PostUser where PostId like ?")
-        statement.setInt(1, PostId)
-        val result = statement.executeQuery()
-
-        val postUsers = mutableListOf<PostUsers>()
-        while (result.next()) {
-            val postUser = readEntity(result)
-
-            postUsers.add(postUser)
-        }
-
-        close(statement)
-
-        return postUsers
     }
 
     override fun insertCore(entity: PostUsers): PreparedStatement {

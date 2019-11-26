@@ -1,19 +1,13 @@
 package com.kcci.facestagram.repositories
 
 import com.kcci.facestagram.entities.Booking
-import java.sql.Date
 import java.sql.PreparedStatement
 import java.sql.ResultSet
-import java.sql.Timestamp
 import java.time.LocalDateTime
-import java.time.ZoneId
 
 class BookingRepository: SingleKeyEntityRepository<Booking, Int>() {
-
     override val entityName get() = "Booing"
     override val keyNames get() = "bookingId"
-
-
 
     override fun readEntity(result: ResultSet): Booking {
         val entity = Booking()
@@ -24,11 +18,14 @@ class BookingRepository: SingleKeyEntityRepository<Booking, Int>() {
         entity.price = result.getInt(5)
 
         return entity
-
     }
 
     fun find(BookingId: Int): MutableList<Booking> {
-        val statement = createStatement("select BookingId, PlaceId ,startDate, endDate, price from Booking where BookingId like ?")
+        /**
+         * Inner join required.
+         */
+        val statement = createStatement(
+                "select * from $entityName where $keyNames like ?")
         statement.setInt(1, BookingId)
 
         val result = statement.executeQuery()
@@ -46,21 +43,23 @@ class BookingRepository: SingleKeyEntityRepository<Booking, Int>() {
     }
 
     override fun insertCore(entity: Booking): PreparedStatement {
-        val statement = createStatement("insert into Booking values(?, ?, ?, ?)")
+        val statement = createStatement("insert into $entityName values(?, ?, ?, ?)")
 
         statement.setInt(1, entity.placeId)
-        statement.setString(2, entity.startDate.toString().replace("T", " ").dropLast(6))
-        statement.setString(3, entity.endDate.toString().replace("T", " ").dropLast(6))
+        statement.setString(2, convertDate(entity.startDate))
+        statement.setString(3, convertDate(entity.endDate))
         statement.setInt(4, entity.price)
 
         return statement
     }
 
     override fun updateCore(entity: Booking): PreparedStatement {
-        val statement = createStatement("update Booking set PlaceId = ?, startDate = ?, endDate = ? where bookingId = ?")
+        val statement = createStatement(
+                "update $entityName set PlaceId = ?, startDate = ?, endDate = ?" +
+                " where $keyNames = ?")
         statement.setInt(1, entity.placeId)
-        statement.setString(2, entity.startDate.toString().replace("T", " ").dropLast(6))
-        statement.setString(3, entity.endDate.toString().replace("T", " ").dropLast(6))
+        statement.setString(2, convertDate(entity.startDate))
+        statement.setString(3, convertDate(entity.endDate))
         statement.setInt(4, entity.bookingId)
 
         return statement

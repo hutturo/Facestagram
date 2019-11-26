@@ -8,5 +8,5 @@ class Users : SingleKeyEntity<Int>() {
     var email: String = ""
     var password: String = ""
     var name: String = ""
-    var profileImage: String = ""
+    var profileImage: ByteArray? = null
 }

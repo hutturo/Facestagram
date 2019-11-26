@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/users")
 class UserController {
-
-
     @GetMapping
     fun getAll() = Repository.users.getAll()
 
@@ -35,6 +33,4 @@ class UserController {
 
     @RequestMapping(path = ["/{id}"], method = [RequestMethod.DELETE])
     fun deleteByPK(@PathVariable id: Int) = Repository.users.deleteByPK(id)
-
-
 }

@@ -1,7 +1,6 @@
 package com.kcci.facestagram.controllers
 
 import com.kcci.facestagram.entities.Booking
-import com.kcci.facestagram.entities.Place
 import com.kcci.facestagram.repositories.Repository
 import org.springframework.web.bind.annotation.*
 
@@ -27,8 +26,8 @@ class BookingController {
             return
 
         entity.placeId = booking.placeId
-        entity.startDate = booking.startDate
-        entity.endDate = booking.endDate
+        entity.startDatetime = booking.startDatetime
+        entity.endDatetime = booking.endDatetime
 
         Repository.booking.update(entity)
     }

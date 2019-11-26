@@ -1,6 +1,5 @@
 package com.kcci.facestagram
 
-import com.kcci.facestagram.repositories.Repository
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

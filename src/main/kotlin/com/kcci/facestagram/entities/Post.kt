@@ -1,6 +1,5 @@
 package com.kcci.facestagram.entities
 
-import org.springframework.web.servlet.mvc.LastModified
 import java.time.LocalDateTime
 
 class Post : SingleKeyEntity<Int>() {

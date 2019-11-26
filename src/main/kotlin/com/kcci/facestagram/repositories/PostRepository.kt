@@ -14,7 +14,7 @@ class PostRepository : SingleKeyEntityRepository<Post, Int>() {
     override fun readEntity(result: ResultSet): Post {
         val entity = Post()
         entity.postId = result.getInt(1)
-        entity.userId = result.getInt(2)
+        entity.usersId = result.getInt(2)
         entity.content = result.getString(3)
         entity.planStartDate = LocalDateTime.parse(result.getString(4))
         entity.planEndDate = LocalDateTime.parse(result.getString(5))
@@ -25,7 +25,7 @@ class PostRepository : SingleKeyEntityRepository<Post, Int>() {
     }
 
     fun find(PostId: Int): MutableList<Post> {
-        val statement = createStatement("select PostId, UserId, Content, PlanStartDate, PlanEndDate, PlaceId, AccessibleLevelId from Post where PostId like ?")
+        val statement = createStatement("select PostId, UsersId, Content, PlanStartDate, PlanEndDate, PlaceId, AccessibleLevelId from Post where PostId like ?")
         statement.setInt(1, PostId)
 
         val result = statement.executeQuery()
@@ -45,7 +45,7 @@ class PostRepository : SingleKeyEntityRepository<Post, Int>() {
     override fun insertCore(entity: Post): PreparedStatement {
         val statement = createStatement("insert into Post values(?, ?, ?, ?, ?, ?)")
 
-        statement.setInt(1, entity.userId)
+        statement.setInt(1, entity.usersId)
         statement.setString(2, entity.content)
         statement.setString(3, entity.planStartDate.toString().replace("T", " ").dropLast(6))
         statement.setString(4, entity.planEndDate.toString().replace("T", " ").dropLast(6))
@@ -56,8 +56,8 @@ class PostRepository : SingleKeyEntityRepository<Post, Int>() {
     }
 
     override fun updateCore(entity: Post): PreparedStatement {
-        val statement = createStatement("update Post set UserId = ?, Content = ?, PlanStartDate = ?, PlanEndDate = ?, PlaceId = ?, AccessibleLevelId = ? where PostId = ?")
-        statement.setInt(1, entity.userId)
+        val statement = createStatement("update Post set UsersId = ?, Content = ?, PlanStartDate = ?, PlanEndDate = ?, PlaceId = ?, AccessibleLevelId = ? where PostId = ?")
+        statement.setInt(1, entity.usersId)
         statement.setString(2, entity.content)
         statement.setString(3, entity.planStartDate.toString().replace("T", " ").dropLast(6))
         statement.setString(4, entity.planEndDate.toString().replace("T", " ").dropLast(6))

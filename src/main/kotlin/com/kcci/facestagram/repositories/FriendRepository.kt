@@ -1,7 +1,6 @@
 package com.kcci.facestagram.repositories
 
 import com.kcci.facestagram.entities.Friend
-import com.kcci.facestagram.entities.Users
 import com.kcci.facestagram.exceptions.UnupdatableException
 import java.sql.PreparedStatement
 import java.sql.ResultSet
@@ -20,9 +19,9 @@ class FriendRepository : DoubleKeyEntityRepository<Friend, Int, Int>() {
         return entity
     }
 
-    fun find(UserId: Int): MutableList<Friend> {
-        val statement = createStatement("select  UserId, FriendId from Friend where UserId like ?")
-        statement.setInt(1, UserId)
+    fun find(UsersId: Int): MutableList<Friend> {
+        val statement = createStatement("select  UsersId, FriendId from Friend where UsersId like ?")
+        statement.setInt(1, UsersId)
         val result = statement.executeQuery()
 
         val friends = mutableListOf<Friend>()

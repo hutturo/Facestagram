@@ -4,6 +4,6 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/postUser")
-class PostUser {
+@RequestMapping("/friend")
+class FriendController {
 }

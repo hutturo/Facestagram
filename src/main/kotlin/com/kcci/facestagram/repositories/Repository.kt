@@ -7,5 +7,6 @@ object Repository {
     val place = PlaceRepository()
     val post = PostRepository()
     val postUser = PostUsersRepository()
-    val users = UsersRepository()
+    val user = UserRepository()
+    val friend = FriendRepository()
 }

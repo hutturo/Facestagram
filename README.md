@@ -18,23 +18,26 @@
     ![alt text](github/FirstPage.PNG)   
     * 앱을 실행 했을 때 처음으로 나오는 화면.
     
-    ![alt text](github/LogIn.PNG)
-    * 앱의 서비스를 이용하기 위한 로그인 화면.
-    
-    ![alt text](github/SingUp.PNG)
-    * 로그인을 할 수 있는 계정이 없을 경우를 위한 회원가입.
-    
     ![alt text](github/PostView.PNG)
     * 자신이 올린 사진, 사진과 관련된 text 리스트.
     
-    ![alt text](github/Calendar.PNG)
-    * 자신이 공유한 일정 확인.
+    ![alt text](github/MyPost.PNG)
+    * 친구가 게시한 글.
     
-    ![alt text](github/MyProfile.PNG)
-    * My Profile을 확인하고 수정.
+    ![alt text](github/Calendar.PNG)
+    * 자신이 공유할 일정 확인.
+    
+    ![alt text](github/FriendsList.PNG)
+    * 나의 친구 목록.
+    
+    ![alt text](github/Placelist.PNG)
+    * 장소 목록.
+    
+    ![alt text](github/NewPost.PNG)
+    * 새로운 글 작성.
     
     ![alt text](github/Booking.PNG)
-    * 날짜와 시간을 정하고 장소를 예약.
+    * 날짜와 장소를 정하고 만남 장소 예약 가능.
     
 # TODO
 - [x] 11.26 Mock-up 추가

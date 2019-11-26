@@ -4,7 +4,7 @@ import com.kcci.facestagram.entities.SingleKeyEntity
 
 abstract class SingleKeyEntityRepository<T: SingleKeyEntity<K1>, K1> : EntityRepository<T>() {
      fun getByPK(id: K1): T? {
-        val statement = createStatement("select * from $entityName where $keyNames = ?")
+        val statement = createStatement("select * from [$entityName] where $keyNames = ?")
         statement.setObject(1, id)
 
         val result = statement.executeQuery()
@@ -21,7 +21,7 @@ abstract class SingleKeyEntityRepository<T: SingleKeyEntity<K1>, K1> : EntityRep
     }
 
      fun deleteByPK(id: K1){
-        val statement = createStatement("delete $entityName where $keyNames = ?")
+        val statement = createStatement("delete [$entityName] where $keyNames = ?")
         statement.setObject(1, id)
 
         statement.executeUpdate()

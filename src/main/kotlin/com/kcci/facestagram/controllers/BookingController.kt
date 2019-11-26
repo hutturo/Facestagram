@@ -29,7 +29,6 @@ class BookingController {
         entity.placeId = booking.placeId
         entity.startDate = booking.startDate
         entity.endDate = booking.endDate
-        entity.price = booking.price
 
         Repository.booking.update(entity)
     }

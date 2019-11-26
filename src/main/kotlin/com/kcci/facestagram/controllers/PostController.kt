@@ -25,10 +25,11 @@ class PostController {
         if (entity == null)
             return
 
-        entity.usersId = post.usersId
+        entity.userId = post.userId
         entity.content = post.content
-        entity.planStartDate = post.planStartDate
-        entity.planEndDate = post.planEndDate
+        entity.LastModified = post.LastModified
+        entity.planStartDatetime = post.planStartDatetime
+        entity.planEndDatetime = post.planEndDatetime
         entity.placeId = post.placeId
         entity.accessibleLevelId = post.accessibleLevelId
 

@@ -13,7 +13,7 @@ class FriendRepository : DoubleKeyEntityRepository<Friend, Int, Int>() {
 
     override fun readEntity(result: ResultSet): Friend {
         val entity = Friend()
-        entity.usersId = result.getInt(1)
+        entity.userId = result.getInt(1)
         entity.friendId = result.getInt(2)
 
         return entity
@@ -22,7 +22,7 @@ class FriendRepository : DoubleKeyEntityRepository<Friend, Int, Int>() {
     override fun insertCore(entity: Friend): PreparedStatement {
         val statement = createStatement("insert into $entityName values(?, ?)")
 
-        statement.setInt(1, entity.usersId)
+        statement.setInt(1, entity.userId)
         statement.setInt(2, entity.friendId)
 
         return statement

@@ -39,11 +39,5 @@ class FriendController {
 //    @RequestMapping(path = ["/{id}"], method = [RequestMethod.DELETE])
 //    fun deleteByPK(@PathVariable id: Int) = Repository.friend.deleteByPK(id)
 
-    @RequestMapping(path = ["/{id}"], method = [RequestMethod.DELETE])
-    fun deleteByPK(@PathVariable doubleKeyId: String)  {
-        var numbersContainer: List<String> = doubleKeyId.split(",")
-        Repository.friend.deleteByPK(Integer.parseInt(numbersContainer[0]),
-                Integer.parseInt(numbersContainer[1]))
-    }
 
 }

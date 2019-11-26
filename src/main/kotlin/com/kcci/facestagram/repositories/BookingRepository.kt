@@ -13,31 +13,30 @@ class BookingRepository: SingleKeyEntityRepository<Booking, Int>() {
         val entity = Booking()
         entity.bookingId = result.getInt(1)
         entity.placeId = result.getInt(2)
-        entity.startDate = LocalDateTime.parse(result.getString(3))
-        entity.endDate = LocalDateTime.parse(result.getString(4))
-        entity.price = result.getInt(5)
+        entity.startDatetime = LocalDateTime.parse(result.getString(3))
+        entity.endDatetime = LocalDateTime.parse(result.getString(4))
 
         return entity
     }
 
     override fun insertCore(entity: Booking): PreparedStatement {
-        val statement = createStatement("insert into $entityName values(?, ?, ?, ?)")
+        val statement = createStatement("insert into $entityName values(?, ?, ?)")
 
         statement.setInt(1, entity.placeId)
-        statement.setString(2, convertDate(entity.startDate))
-        statement.setString(3, convertDate(entity.endDate))
-        statement.setInt(4, entity.price)
+        statement.setString(2, convertDate(entity.startDatetime))
+        statement.setString(3, convertDate(entity.endDatetime))
+
 
         return statement
     }
 
     override fun updateCore(entity: Booking): PreparedStatement {
         val statement = createStatement(
-                "update $entityName set PlaceId = ?, startDate = ?, endDate = ?" +
+                "update $entityName set plcaeId = ?, startDatetime = ?, endDatetime = ?" +
                 " where $keyNames = ?")
         statement.setInt(1, entity.placeId)
-        statement.setString(2, convertDate(entity.startDate))
-        statement.setString(3, convertDate(entity.endDate))
+        statement.setString(2, convertDate(entity.startDatetime))
+        statement.setString(3, convertDate(entity.endDatetime))
         statement.setInt(4, entity.bookingId)
 
         return statement

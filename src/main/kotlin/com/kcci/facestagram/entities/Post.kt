@@ -1,5 +1,6 @@
 package com.kcci.facestagram.entities
 
+import org.springframework.web.servlet.mvc.LastModified
 import java.time.LocalDateTime
 
 class Post : SingleKeyEntity<Int>() {
@@ -7,11 +8,11 @@ class Post : SingleKeyEntity<Int>() {
         get() = postId
 
     var postId: Int = 0
-    var usersId: Int = 0
+    var userId: Int = 0
     var content: String = ""
-    var planStartDate: LocalDateTime = LocalDateTime.now()
-    var planEndDate: LocalDateTime? = null
-    var postUserId: Int = 0
+    var LastModified: LocalDateTime = LocalDateTime.now()
+    var planStartDatetime: LocalDateTime? = null
+    var planEndDatetime: LocalDateTime? = null
     var placeId: Int = 0
     var accessibleLevelId: Int = 1
 }

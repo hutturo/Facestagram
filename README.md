@@ -31,10 +31,10 @@
     * 자신이 공유한 일정 확인.
     
     ![alt text](github/MyProfile.PNG)
-    * My Profile을 확인하고 수정.
+    * My Profile을 확인하고 수정 가능.
     
     ![alt text](github/Booking.PNG)
-    * 날짜와 시간을 정하고 장소를 예약.
+    * 날짜와 장소를 정하고 만남 장소 예약 가능.
     
 # TODO
 - [x] 11.26 Mock-up 추가

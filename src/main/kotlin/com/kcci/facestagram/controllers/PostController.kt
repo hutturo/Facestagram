@@ -27,7 +27,7 @@ class PostController {
 
         entity.userId = post.userId
         entity.content = post.content
-        entity.LastModified = post.LastModified
+        entity.lastModified = post.lastModified
         entity.planStartDatetime = post.planStartDatetime
         entity.planEndDatetime = post.planEndDatetime
         entity.placeId = post.placeId

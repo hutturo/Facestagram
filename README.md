@@ -43,11 +43,19 @@
 - [x] 11.26 Mock-up 추가
 - [x] 11.26 데이터베이스 추가
 - [x] 11.26 테스트
-- [ ] 11.27 android jsonObject 작동 확인
+- [x] 11.27 android jsonObject 작동 확인
 - [ ] 11.27 앱 ui 구현
-- [ ] 친구 목록
-- [ ] 장소 목록
-- [ ] 내 달력
-- [ ] 포스트 기능 (생성, 편집, 삭제)
-- [ ] 친구 포스트 보기
-- [ ] 오픈 포스트 보기
+- [ ] Activity에 필요한 REST url 구현 및 쿼리문
+    1. MainActivity
+    1. PostlistActivity
+    1. CalendarActivity
+    1. NewPostActivity
+    1. BookingActivity
+    1. PlacelistActivity
+    1. FriendlistActivity
+- [ ] ~~친구 목록~~
+- [ ] ~~장소 목록~~
+- [ ] ~~내 달력~~
+- [ ] ~~포스트 기능 (생성, 편집, 삭제)~~
+- [ ] ~~친구 포스트 보기~~
+- [ ] ~~오픈 포스트 보기~~

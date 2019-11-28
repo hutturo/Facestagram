@@ -27,6 +27,7 @@ internal class PostRepositoryTest {
 
     @Test
     fun getAll() {
+        assertTrue(Repository.post.getAll().count() > 0)
     }
 
     @Test

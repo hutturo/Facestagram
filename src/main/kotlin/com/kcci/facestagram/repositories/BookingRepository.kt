@@ -13,8 +13,8 @@ class BookingRepository: SingleKeyEntityRepository<Booking, Int>() {
         val entity = Booking()
         entity.bookingId = result.getInt(1)
         entity.placeId = result.getInt(2)
-        entity.startDatetime = LocalDateTime.parse(result.getString(3))
-        entity.endDatetime = LocalDateTime.parse(result.getString(4))
+        entity.startDatetime = convertDate(result.getString(3))
+        entity.endDatetime = convertDate(result.getString(4))
 
         return entity
     }

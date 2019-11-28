@@ -14,8 +14,8 @@ class TimeTableRepository : SingleKeyEntityRepository<TimeTable, Int>() {
     override fun readEntity(result: ResultSet): TimeTable {
         val entity = TimeTable()
         entity.timeTableId = result.getInt(1)
-        entity.starttime = LocalDateTime.parse(result.getString(2))
-        entity.endtime = LocalDateTime.parse(result.getString(3))
+        entity.starttime = convertDate(result.getString(2))
+        entity.endtime = convertDate(result.getString(3))
 
         return entity
     }

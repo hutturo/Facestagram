@@ -14,9 +14,9 @@ class PostRepository : SingleKeyEntityRepository<Post, Int>() {
         entity.postId = result.getInt(1)
         entity.userId = result.getInt(2)
         entity.content = result.getString(3)
-        entity.lastModified = LocalDateTime.parse(result.getString(4))
-        entity.planStartDatetime = LocalDateTime.parse(result.getString(5))
-        entity.planEndDatetime = LocalDateTime.parse(result.getString(6))
+        entity.lastModified = convertDate(result.getString(4))
+        entity.planStartDatetime = convertDate(result.getString(5))
+        entity.planEndDatetime = convertDate(result.getString(6))
         entity.placeId = result.getInt(7)
         entity.accessibleLevelId = result.getInt(8)
 

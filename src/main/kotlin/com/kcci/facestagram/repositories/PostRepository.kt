@@ -24,32 +24,33 @@ class PostRepository : SingleKeyEntityRepository<Post, Int>() {
     }
 
     override fun insertCore(entity: Post): PreparedStatement {
-        val statement = createStatement("insert into [$entityName] values(?, ?, ?, ?, ?, ?, ?)")
+        val statement = createStatement(
+                "insert into [$entityName] values(?, ?, CONVERT(smalldatetime, CURRENT_TIMESTAMP), ?, ?, ?, ?)")
 
         statement.setInt(1, entity.userId)
         statement.setString(2, entity.content)
-        statement.setString(3, convertDate(entity.lastModified))
-        statement.setString(4, convertDate(entity.planStartDatetime))
-        statement.setString(5, convertDate(entity.planEndDatetime))
-        statement.setInt(6, entity.placeId)
-        statement.setInt(7, entity.accessibleLevelId)
+        // statement.setString(3, convertDate(entity.lastModified))
+        statement.setString(3, convertDate(entity.planStartDatetime))
+        statement.setString(4, convertDate(entity.planEndDatetime))
+        statement.setInt(5, entity.placeId)
+        statement.setInt(6, entity.accessibleLevelId)
 
         return statement
     }
 
     override fun updateCore(entity: Post): PreparedStatement {
         val statement = createStatement("update [$entityName]" +
-                " set UsersId = ?, LastModified = ?, Content = ?," +
+                " set UsersId = ?, LastModified = CONVERT(smalldatetime, CURRENT_TIMESTAMP), Content = ?," +
                 " PlanStartDate = ?, PlanEndDate = ?, PlaceId = ?," +
                 " AccessibleLevelId = ? where $keyNames = ?")
         statement.setInt(1, entity.userId)
         statement.setString(2, entity.content)
-        statement.setString(3, convertDate(entity.lastModified))
-        statement.setString(4, convertDate(entity.planStartDatetime))
-        statement.setString(5, convertDate(entity.planEndDatetime))
-        statement.setInt(6, entity.placeId)
-        statement.setInt(7, entity.accessibleLevelId)
-        statement.setInt(8, entity.postId)
+        // statement.setString(3, convertDate(entity.lastModified))
+        statement.setString(3, convertDate(entity.planStartDatetime))
+        statement.setString(4, convertDate(entity.planEndDatetime))
+        statement.setInt(5, entity.placeId)
+        statement.setInt(6, entity.accessibleLevelId)
+        statement.setInt(7, entity.postId)
 
         return statement
     }

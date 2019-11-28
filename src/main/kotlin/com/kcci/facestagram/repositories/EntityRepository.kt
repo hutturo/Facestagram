@@ -19,7 +19,7 @@ abstract class EntityRepository<T: Entity> {
     }
 
     protected fun convertDate(date: LocalDateTime?): String {
-        return date?.toString()!!.replace("T", " ").dropLast(6)
+        return date?.toString()!!.replace("T", " ").dropLast(7)
     }
 
     protected abstract val entityName: String

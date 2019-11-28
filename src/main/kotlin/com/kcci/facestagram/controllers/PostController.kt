@@ -16,6 +16,7 @@ class PostController {
 
     @PostMapping
     fun insert(@RequestBody post: Post){
+        println(post)
         Repository.post.insert(post)
     }
 

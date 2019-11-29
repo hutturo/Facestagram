@@ -74,6 +74,7 @@
     * 새로운 post 내용을 입력하고 저장 할 수 있는 기능
     
     * 아직 구현되지 않은 기능
+    
     ![alt_text](github/calendarActivity.PNG)
     * 등록된 일정을 보여주는 화면
     * 포스트 (편집, 삭제)

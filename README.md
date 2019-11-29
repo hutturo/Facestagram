@@ -54,8 +54,28 @@
     1. PlacelistActivity
     1. FriendlistActivity
 - [ ] ~~친구 목록~~
-- [ ] ~~장소 목록~~
+- [x] ~~장소 목록~~
 - [ ] ~~내 달력~~
 - [ ] ~~포스트 기능 (생성, 편집, 삭제)~~
 - [ ] ~~친구 포스트 보기~~
 - [ ] ~~오픈 포스트 보기~~
+
+* # 기능구현
+    ![alt_text](github/firsttime.PNG)
+    * 처음 시작 화면
+    
+    ![alt_text](github/postlist.png)
+    * 서버에 저장된 post의 항목을 보여주는 화면
+    
+    ![alt_text](github/placelistactivity.PNG)
+    * 저장된 장소들의 항목을 보여주는 화면
+    
+    ![alt_text](github/newpostactivity.PNG)
+    * 새로운 post 내용을 입력하고 저장 할 수 있는 기능
+    
+    * 아직 구현되지 않은 기능
+    ![alt_text](github/calendarActivity.PNG)
+    * 등록된 일정을 보여주는 화면
+    * 포스트 (편집, 삭제)
+    * 친구목록
+    
